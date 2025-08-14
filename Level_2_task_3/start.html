@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Tasks To-Do App</title>
+    <link rel="stylesheet" href="middle.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Daily Tasks</h1>
+            <p>Stay organized and productive with your daily to-do list</p>
+        </header>
+
+        <section class="input-section">
+            <input 
+                type="text" 
+                class="task-input" 
+                placeholder="Enter a new task..." 
+                id="taskInput"
+            >
+            <button class="add-btn" onclick="addTask()">
+                Add Task
+            </button>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalTasks">0</div>
+                <div class="stat-label">Total Tasks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pendingTasks">0</div>
+                <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="completedTasks">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+        </section>
+
+        <nav class="tabs">
+            <button class="tab active" onclick="showTab('all')">
+                All Tasks
+            </button>
+            <button class="tab" onclick="showTab('pending')">
+                Pending Tasks
+            </button>
+            <button class="tab" onclick="showTab('completed')">
+                Completed Tasks
+            </button>
+        </nav>
+
+
+        <main class="tasks-container" id="tasksContainer">
+            <div class="empty-state" id="emptyState">
+                <h3>No tasks yet!</h3>
+                <p>Add your first task to get started.</p>
+            </div>
+        </main>
+
+    </div>
+
+
+    <script src="end.js"></script>
+</body>
+</html>

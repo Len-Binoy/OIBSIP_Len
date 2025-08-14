@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Login - AuthSystem{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1 class="logo">AuthSystem</h1>
+        <div class="nav-links">
+            <a href="{{ url_for('main.index') }}">Home</a>
+            <a href="{{ url_for('auth.register') }}">Register</a>
+        </div>
+    </div>
+    
+    <h2 class="form-title">Welcome Back</h2>
+    
+    <form method="POST" autocomplete="on">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" class="form-input" required autocomplete="username">
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-input" required autocomplete="current-password">
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 2rem;">
+            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                <input type="checkbox" name="remember" style="margin: 0;">
+                <span style="font-size: 0.9rem;">Remember me</span>
+            </label>
+        </div>
+        
+        <button type="submit" class="btn">
+            <span>Sign In</span>
+        </button>
+    </form>
+    
+    <div class="register-link">
+        <p>Don't have an account? <a href="{{ url_for('auth.register') }}">Create one here</a></p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Settings - AuthSystem{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">Account Settings</h1>
+        <div style="display: flex; gap: 1rem;">
+            <a href="{{ url_for('main.dashboard') }}" class="btn" style="width: auto; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #4299e1, #3182ce);">Dashboard</a>
+            <a href="{{ url_for('auth.logout') }}" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    
+    <div class="welcome-card">
+        <h2 class="welcome-title">Settings</h2>
+        <p class="welcome-text">Manage your account preferences and security</p>
+    </div>
+    
+    <!-- Update Profile Section -->
+    <div style="background: rgba(255, 255, 255, 0.8); padding: 2rem; border-radius: 16px; margin-top: 2rem;">
+        <h3 style="color: #2d3748; margin-bottom: 1.5rem; font-size: 1.25rem; font-weight: 600;">Update Profile</h3>
+        
+        <form method="POST" action="{{ url_for('user.update_profile') }}">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" class="form-input" value="{{ user.email }}" required>
+            </div>
+            
+            <button type="submit" class="btn" style="width: auto; padding: 0.75rem 1.5rem;">
+                <span>Update Profile</span>
+            </button>
+        </form>
+    </div>
+    
+    <!-- Change Password Section -->
+    <div style="background: rgba(255, 255, 255, 0.8); padding: 2rem; border-radius: 16px; margin-top: 2rem;">
+        <h3 style="color: #2d3748; margin-bottom: 1.5rem; font-size: 1.25rem; font-weight: 600;">Change Password</h3>
+        
+        <form method="POST" action="{{ url_for('user.change_password') }}">
+            <div class="form-group">
+                <label for="current_password">Current Password</label>
+                <input type="password" id="current_password" name="current_password" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="new_password">New Password</label>
+                <input type="password" id="new_password" name="new_password" class="form-input" required minlength="6">
+            </div>
+            
+            <button type="submit" class="btn" style="width: auto; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #f56565, #e53e3e);">
+                <span>Change Password</span>
+            </button>
+        </form>
+    </div>
+    
+    <!-- Account Information -->
+    <div style="background: rgba(255, 255, 255, 0.8); padding: 2rem; border-radius: 16px; margin-top: 2rem;">
+        <h3 style="color: #2d3748; margin-bottom: 1.5rem; font-size: 1.25rem; font-weight: 600;">Account Information</h3>
+        
+        <div style="display: grid; gap: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(102, 126, 234, 0.05); border-radius: 12px;">
+                <span style="color: #4a5568; font-weight: 600;">Username:</span>
+                <span style="color: #2d3748;">{{ user.username }}</span>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(102, 126, 234, 0.05); border-radius: 12px;">
+                <span style="color: #4a5568; font-weight: 600;">Current Email:</span>
+                <span style="color: #2d3748;">{{ user.email }}</span>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(102, 126, 234, 0.05); border-radius: 12px;">
+                <span style="color: #4a5568; font-weight: 600;">Account ID:</span>
+                <span style="color: #2d3748;">#{{ user.id }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

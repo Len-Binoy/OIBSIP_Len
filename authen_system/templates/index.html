@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Home - AuthSystem{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1 class="logo">AuthSystem</h1>
+        {% if current_user.is_authenticated %}
+            <div class="nav-links">
+                <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('main.profile') }}">Profile</a>
+                <a href="{{ url_for('user.settings') }}">Settings</a>
+                <a href="{{ url_for('auth.logout') }}">Logout</a>
+            </div>
+        {% else %}
+            <div class="nav-links">
+                <a href="{{ url_for('auth.login') }}">Login</a>
+                <a href="{{ url_for('auth.register') }}">Register</a>
+            </div>
+        {% endif %}
+    </div>
+    
+    {% if current_user.is_authenticated %}
+        <div class="welcome-card">
+            <h2 class="welcome-title">Welcome back, {{ current_user.username }}!</h2>
+            <p class="welcome-text">You are successfully logged into your account.</p>
+        </div>
+        <div style="text-align: center;">
+            <a href="{{ url_for('main.dashboard') }}" class="btn">Go to Dashboard</a>
+        </div>
+    {% else %}
+        <div class="welcome-card">
+            <h2 class="welcome-title">Welcome to AuthSystem</h2>
+            <p class="welcome-text">A modern, secure authentication system built with Flask.</p>
+        </div>
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+            <a href="{{ url_for('auth.login') }}" class="btn" style="width: auto; padding: 1rem 2rem;">Login</a>
+            <a href="{{ url_for('auth.register') }}" class="btn" style="width: auto; padding: 1rem 2rem; background: linear-gradient(135deg, #48bb78, #38a169);">Register</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

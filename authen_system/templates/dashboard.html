@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - AuthSystem{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">Dashboard</h1>
+        <a href="{{ url_for('auth.logout') }}" class="logout-btn">Logout</a>
+    </div>
+    
+    <div class="welcome-card">
+        <h2 class="welcome-title">Hello, {{ name }}!</h2>
+        <p class="welcome-text">Welcome to your secure dashboard. Manage your account and settings from here.</p>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)); padding: 2rem; border-radius: 16px; text-align: center;">
+            <h3 style="color: #667eea; margin-bottom: 1rem;">Profile</h3>
+            <p style="color: #4a5568; margin-bottom: 1.5rem;">View and edit your profile information</p>
+            <a href="{{ url_for('main.profile') }}" class="btn" style="width: auto; padding: 0.75rem 1.5rem;">View Profile</a>
+        </div>
+        
+        <div style="background: linear-gradient(135deg, rgba(72, 187, 120, 0.1), rgba(56, 161, 105, 0.1)); padding: 2rem; border-radius: 16px; text-align: center;">
+            <h3 style="color: #48bb78; margin-bottom: 1rem;">Settings</h3>
+            <p style="color: #4a5568; margin-bottom: 1.5rem;">Manage your account settings and preferences</p>
+            <a href="{{ url_for('user.settings') }}" class="btn" style="width: auto; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #48bb78, #38a169);">Manage Settings</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

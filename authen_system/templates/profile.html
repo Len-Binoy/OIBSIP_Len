@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - AuthSystem{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">Profile</h1>
+        <div style="display: flex; gap: 1rem;">
+            <a href="{{ url_for('main.dashboard') }}" class="btn" style="width: auto; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #4299e1, #3182ce);">Dashboard</a>
+            <a href="{{ url_for('auth.logout') }}" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    
+    <div class="welcome-card">
+        <h2 class="welcome-title">{{ user.username }}</h2>
+        <p class="welcome-text">Your profile information</p>
+    </div>
+    
+    <div style="background: rgba(255, 255, 255, 0.8); padding: 2rem; border-radius: 16px; margin-top: 2rem;">
+        <h3 style="color: #2d3748; margin-bottom: 1.5rem; font-size: 1.25rem; font-weight: 600;">Account Details</h3>
+        
+        <div style="display: grid; gap: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(102, 126, 234, 0.05); border-radius: 12px; border-left: 4px solid #667eea;">
+                <div>
+                    <strong style="color: #4a5568;">Username:</strong>
+                    <p style="color: #2d3748; margin: 0.5rem 0 0 0;">{{ user.username }}</p>
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(102, 126, 234, 0.05); border-radius: 12px; border-left: 4px solid #667eea;">
+                <div>
+                    <strong style="color: #4a5568;">Email:</strong>
+                    <p style="color: #2d3748; margin: 0.5rem 0 0 0;">{{ user.email }}</p>
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(102, 126, 234, 0.05); border-radius: 12px; border-left: 4px solid #667eea;">
+                <div>
+                    <strong style="color: #4a5568;">User ID:</strong>
+                    <p style="color: #2d3748; margin: 0.5rem 0 0 0;">#{{ user.id }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="{{ url_for('user.settings') }}" class="btn" style="width: auto; padding: 1rem 2rem;">Edit Profile</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
